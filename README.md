@@ -4,7 +4,7 @@ This guide will walk through the steps to use [the `eslint-plugin-jsdoc` package
 
 ## Installation
 
-1. Ensure you have `node` and `npm` installed on your operating system.
+**1.** Ensure you have `node` and `npm` installed on your operating system.
 
 ```bash
 $ node -v    
@@ -13,19 +13,19 @@ $ npm -v
   10.8.2
 ```
 
-2. If necessary, create a new directory for your project and navigate to it in the terminal.
+**2.** If necessary, create a new directory for your project and navigate to it in the terminal.
 
 ```bash
 $  mkdir my-project && cd my-project
 ```
 
-3. Initialise your new project with npm:
+**3.** Initialise your new project with npm:
 
 ```bash
 $ npm init -y
 ```
 
-4. Install the `eslint` and `eslint-plugin-jsdoc` packages as dev dependencies:
+**4.** Install the `eslint` and `eslint-plugin-jsdoc` packages as dev dependencies:
 
 ```bash
 $ npm install --save-dev eslint eslint-plugin-jsdoc
@@ -33,7 +33,7 @@ $ npm install --save-dev eslint eslint-plugin-jsdoc
 
 ## Configuration
 
-5. Create an [ESLint configuration file](https://eslint.org/docs/latest/use/configure/configuration-files) in your project root. We will name ours with an `.mjs` file extension so we can import and export modules into the configuration using the ECMAScript modules (ESM) syntax.
+**5.** Create an [ESLint configuration file](https://eslint.org/docs/latest/use/configure/configuration-files) in your project root. We will name ours with an `.mjs` file extension so we can import and export modules into the configuration using the ECMAScript modules (ESM) syntax.
 
 ```bash
 $ touch eslint.config.mjs
@@ -61,7 +61,7 @@ export default [
 
 This example configuration *extends* [the `'flat/recommended'` rules](https://www.npmjs.com/package/eslint-plugin-jsdoc#flat-config) from `eslint-plugin-jsdoc` and includes one bespoke rule.
 
-6. If using **CommonJS** instead of ES modules, name your configuration file with a plain `.js` file extension. The CommonJS version will look like this:
+**6.** If using **CommonJS** instead of ES modules, name your configuration file with a plain `.js` file extension. The CommonJS version will look like this:
 
 ```javascript
 const jsdoc = require('eslint-plugin-jsdoc');
@@ -73,19 +73,20 @@ module.exports = [
 
 ## Usage
 
-7. Add a `lint` entry to the `scripts` section of your `package.json` file. This will run the `eslint` binary aliased at `node_modules/.bin/eslint`.
+**7.** Add a `lint` entry to the `scripts` section of your `package.json` file. This will run the `eslint` binary aliased at `node_modules/.bin/eslint`.
 
 In our case we tell the `eslint` to look for files in our `./src` directory.
 
 ```json
 {
+  ...
   "scripts": {
     "lint": "eslint ./src",
   }
 }
 ```
 
-8. Create a JavaScript file in the `src` folder to try your setup out. Include some JSDoc comments:
+**8.** Create a JavaScript file in the `src` folder to try your setup out. Include some JSDoc comments:
 
 ```javascript
 /**
@@ -99,7 +100,7 @@ function sum(a, b) {
 }
 ```
 
-9. Run the linter via `npm`:
+**9.** Run the linter via `npm`:
 
 ```bash
 $ npm run lint
@@ -120,13 +121,16 @@ If you want to see more information from `eslint` you can change the "lint" scri
 
 ## Customisation
 
-10. You can customise the rules in your `eslint.config.mjs`. For example:
+**10.** You can customise the rules in your `eslint.config.mjs`. For example:
 
 ```javascript
-rules: {
-  'jsdoc/require-description': 'error',
-  'jsdoc/require-param-type': 'error',
-  'jsdoc/require-returns': 'error'
+{
+  ...
+  rules: {
+    'jsdoc/require-description': 'error',
+    'jsdoc/require-param-type': 'error',
+    'jsdoc/require-returns': 'error'
+  }
 }
 ```
 
@@ -134,7 +138,7 @@ These new rules make `eslint` produce an error if it finds a JSDoc comment witho
 
 The complete set of available [rules are documented](https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README/rules) in the `eslint-plugin-jsdoc` repository.
 
-11. Further configurations can be added to the `settings` object in your ESLint configuration file.
+**11.** Further configurations can be added to the `settings` object in your ESLint configuration file.
 
 ```javascript
 {
